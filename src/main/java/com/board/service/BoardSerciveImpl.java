@@ -1,10 +1,15 @@
 package com.board.service;
 
+import java.util.List;
+
 import javax.inject.Inject;
+
+import org.springframework.stereotype.Repository;
 
 import com.board.domain.BoardVO;
 import com.board.presistence.BoardDAO;
 
+@Repository
 public class BoardSerciveImpl implements BoardService{
 	
 	@Inject
@@ -30,4 +35,10 @@ public class BoardSerciveImpl implements BoardService{
 		dao.delete(bno);
 	}
 
+	@Override
+	public List<BoardVO> list() throws Exception {
+		return dao.list();
+	}
+	
+	
 }

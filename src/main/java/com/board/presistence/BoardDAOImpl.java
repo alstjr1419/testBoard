@@ -1,11 +1,15 @@
 package com.board.presistence;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.stereotype.Repository;
 
 import com.board.domain.BoardVO;
 
+@Repository
 public class BoardDAOImpl implements BoardDAO{
 	
 	//마이바티스
@@ -24,8 +28,7 @@ public class BoardDAOImpl implements BoardDAO{
 	//조회
 	@Override
 	public BoardVO read(int bno) throws Exception {
-		sql.selectOne(namespace + ".read", bno);
-		return null;
+		return sql.selectOne(namespace + ".read", bno);
 	}
 	
 	//수정
@@ -40,5 +43,13 @@ public class BoardDAOImpl implements BoardDAO{
 	public void delete(int bno) throws Exception {
 		sql.delete(namespace +  ".delete", bno);
 	}
-
+	
+	//목록
+	@Override
+	public List<BoardVO> list() throws Exception {
+		
+		return sql.selectList(namespace + ".list");
+	}
+	
+	
 }
