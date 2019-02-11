@@ -97,7 +97,7 @@ public class BoardController {
 	 //글 목록 + 페이징
 	 @RequestMapping(value="/listPage", method = RequestMethod.GET)
 	 public void listPage(Criteria cri, Model model) throws Exception {
-		 logger.info("get listPage");
+		 logger.info(cri.toString());
 		 
 		 List<BoardVO> list = service.listPage(cri);
 		 model.addAttribute("list", list);
