@@ -9,13 +9,13 @@
 
 <div id="root">
 	<header>
-		<h1>게시판</h1>
+		<%@include file="include/header.jsp" %>
 	</header>
-	
+		
 	<hr>
 	
 	<nav>
-		처음화면 - 글쓰기 - 로그인
+		<%@include file="include/nav.jsp" %>
 	</nav>
 	
 	<hr>
@@ -40,7 +40,7 @@
 	<hr>
 	
 	<footer>
-		<p>2019-02-08작성</p>
+		<%@include file="include/footer.jsp" %>
 	</footer>
 </div>
 </body>

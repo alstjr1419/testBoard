@@ -8,6 +8,15 @@
  	<script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
 </head>
 <body>
+	
+	<header>
+		<%@include file="include/header.jsp" %>
+	</header>
+	
+	<nav>
+		<%@include file="include/nav.jsp" %>
+	</nav>
+	
 	<section id="container">
 		<form role="form" method="post" autocomplete="off" >
 			<p>
@@ -48,7 +57,7 @@
 	<hr>
 			
 	<footer>
-		단일정보 조회
+		<%@include file="include/footer.jsp" %>
 	</footer>
 </body>
 </html>

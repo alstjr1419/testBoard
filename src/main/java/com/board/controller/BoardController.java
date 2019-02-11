@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.board.domain.BoardVO;
+import com.board.domain.Criteria;
+import com.board.domain.PageMaker;
 import com.board.service.BoardService;
 
 @Controller
@@ -55,7 +57,7 @@ public class BoardController {
 		 model.addAttribute("read", vo);
 	 }
 	 
-	 //수정
+	 //수정 get
 	 @RequestMapping(value="modify", method=RequestMethod.GET)
 	 public void update(@RequestParam("bno")int bno, Model model) throws Exception {
 		 logger.info("get update");
@@ -74,7 +76,7 @@ public class BoardController {
 			 return "redirect:/board/list";
 		 }
 	 
-	 //삭제
+	 //삭제 get
 	 @RequestMapping(value="delete", method = RequestMethod.GET)
 	 public void delete(@RequestParam("bno")int bno, Model model) throws Exception{
 		 logger.info("get delete");
@@ -90,5 +92,20 @@ public class BoardController {
 		 service.delete(bno);
 		
 		 return "redirect:/board/list";
+	 }
+	 
+	 //글 목록 + 페이징
+	 @RequestMapping(value="/listPage", method = RequestMethod.GET)
+	 public void listPage(Criteria cri, Model model) throws Exception {
+		 logger.info("get listPage");
+		 
+		 List<BoardVO> list = service.listPage(cri);
+		 model.addAttribute("list", list);
+		 
+		 PageMaker pageMaker = new PageMaker();
+		 pageMaker.setCri(cri);
+		 pageMaker.setTotalCount(service.listCount());
+		 model.addAttribute("pageMaker", pageMaker);
+		 
 	 }
 }

@@ -5,7 +5,16 @@
 	<title>게시판</title>
 </head>
 <body>
-	<a href="/board/write">글 작성</a>
-	<a href="/board/list">글 목록</a>
+	<header>
+		<%@include file="board/include/header.jsp" %>
+	</header>
+	
+	<nav>
+		<%@include file="board/include/nav.jsp" %>
+	</nav>
+	
+	<footer>
+		<%@include file="board/include/footer.jsp" %>
+	</footer>
 </body>
 </html>
