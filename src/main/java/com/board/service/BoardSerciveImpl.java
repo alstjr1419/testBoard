@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.board.domain.BoardVO;
 import com.board.domain.Criteria;
+import com.board.domain.SearchCriteria;
 import com.board.presistence.BoardDAO;
 
 @Repository
@@ -50,6 +51,16 @@ public class BoardSerciveImpl implements BoardService{
 	@Override
 	public int listCount() throws Exception {
 		return dao.listCount();
+	}
+
+	@Override
+	public List<BoardVO> listSearch(SearchCriteria scri) throws Exception {
+		return dao.listSearch(scri);
+	}
+
+	@Override
+	public int countSearch(SearchCriteria scri) throws Exception {
+		return dao.countSearch(scri);
 	}
 	
 	

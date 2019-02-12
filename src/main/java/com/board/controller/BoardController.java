@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.board.domain.BoardVO;
 import com.board.domain.Criteria;
 import com.board.domain.PageMaker;
+import com.board.domain.SearchCriteria;
 import com.board.service.BoardService;
 
 @Controller
@@ -106,6 +107,24 @@ public class BoardController {
 		 pageMaker.setCri(cri);
 		 pageMaker.setTotalCount(service.listCount());
 		 model.addAttribute("pageMaker", pageMaker);
+		 
+	 }
+	 
+	 //글 목록 + 페이징 + 검색
+	 @RequestMapping(value = "/listSearch", method = RequestMethod.GET)
+	 public void listSearch(SearchCriteria scri, Model model, String searchType) throws Exception{
+		 logger.info("get listSearch");
+		 
+		 List<BoardVO> list = service.listSearch(scri);
+		 model.addAttribute("list", list);
+		 
+		 PageMaker pageMaker = new PageMaker();
+		 pageMaker.setCri(scri);
+		 pageMaker.setTotalCount(service.listCount());
+		 model.addAttribute("pageMaker", pageMaker);
+		 
+		 model.addAttribute("scri", scri);
+		 
 		 
 	 }
 }
