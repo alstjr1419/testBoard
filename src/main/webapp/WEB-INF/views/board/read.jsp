@@ -52,7 +52,7 @@
 					//목록버튼 클릭
 					$("#list_btn").click(function () {
 						self.location = "/board/listSearch?"
-									+ "page=${scri.page}$perPageNum=${scri.perPageNum}"
+									+ "page=${scri.page}&perPageNum=${scri.perPageNum}"
 									+ "&searchType=${scri.searchType}&keyword=${scri.keyword}";
 					})
 					

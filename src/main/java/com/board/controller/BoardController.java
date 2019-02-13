@@ -64,11 +64,14 @@ public class BoardController {
 	 
 	 //수정 get
 	 @RequestMapping(value="modify", method=RequestMethod.GET)
-	 public void update(@RequestParam("bno")int bno, Model model) throws Exception {
+	 public void update(@RequestParam("bno")int bno, Model model,
+			 			@ModelAttribute("scri")SearchCriteria scri) throws Exception {
 		 logger.info("get update");
 		 BoardVO vo = service.read(bno);
 		 
 		 model.addAttribute("modify", vo);
+		 
+		 model.addAttribute("scri", scri);
 	 }
 	 
 	//수정 post
@@ -89,10 +92,13 @@ public class BoardController {
 	 
 	 //삭제 get
 	 @RequestMapping(value="delete", method = RequestMethod.GET)
-	 public void delete(@RequestParam("bno")int bno, Model model) throws Exception{
+	 public void delete(@RequestParam("bno")int bno, Model model,
+			 			@ModelAttribute("scri")SearchCriteria scri) throws Exception{
 		 logger.info("get delete");
 		 
 		 model.addAttribute("delete", bno);
+		 
+		 model.addAttribute("scri", scri);
 	 }
 	 
 	//삭제 post

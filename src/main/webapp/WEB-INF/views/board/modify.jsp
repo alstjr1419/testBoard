@@ -37,7 +37,7 @@
 			</p>
 			<p>
 				<button type="submit">수정</button>
-				<button id="cancel_btn">취소</button>
+				<button type="button" id="cancel_btn">취소</button>
 				
 				<script type="text/javascript">
 					//폼을 변수에 저장
@@ -45,9 +45,11 @@
 					
 					//취소버튼 클릭
 					$("#cancel_btn").click(function () {
-						formObj.attr("action", "/board/read?bno=" + $("#bno").val());
-						formObj.attr("method", "get");
-						formObj.submit();
+						self.location = "/board/read?bno=${modify.bno}"
+							   + "&page=${scri.page}"
+							   + "&perPageNum=${scri.perPageNum}"
+							   + "&searchType=${scri.searchType}"
+							   + "&keyword=${scri.keyword}";
 					});
 				</script>
 			</p>

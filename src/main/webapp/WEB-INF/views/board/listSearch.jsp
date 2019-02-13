@@ -50,7 +50,7 @@
 					</c:if>
 					
 					<c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var="idx">
-						<li><a href="listSearch${pageMaker.makeSearch(idx) }">${idx }</a></li>
+						<li><a href="listSearch${pageMaker.makeSearch(idx)}">${idx }</a></li>
 					</c:forEach>
 					
 					<c:if test="${pageMaker.next }">
